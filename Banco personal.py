@@ -1,9 +1,6 @@
-"""a=[2,3,4,5,6]
-print(sum(a))
-print(sum(a,10))
-b=["apple","papaya","banana"]
-for indicie, fruta in enumerate(b):
-    print(indice,fruta)"""
+# Jesús Alejandro Pérez Granados
+# Simulador de banco para usuario
+
 salir=" "
 Transacciones=[[],[],[],[],[]]
 a=1000
