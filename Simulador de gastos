@@ -1,0 +1,69 @@
+# Jesús Alejandro Pérez Granados
+# Simulador de Gastos Mensuales con Presupuesto
+
+def agregar_gasto(categoria, monto):
+  gastos[categoria].append(monto)
+  print(f'Gastos de {cat[categoria]}: ')
+  for i in gastos[categoria]:
+    print(i)
+def resumen_gastos(presupuesto, lista_gastos):
+  print('Resumen de gastos: ')
+  for i in range(len(cat)):
+    print(cat[i]+':')
+    for j in lista_gastos[i]:
+      print(j)
+    print('')
+def mostrar_balance_presupuesto(resultado):
+  print(f'Su presupuesto es: {presupuesto}')
+  if resultado < presupuesto:
+    print('Sus gastos están debajo del presupuesto')
+  elif resultado == presupuesto:
+    print('Sus gastos igualaron el presupuesto')
+  elif resultado > presupuesto:
+    print('Sus gastos sobrepasaron el presupuesto')
+
+print('Bienvenido al Simulador de Gastos Mensuales con Presupuesto.')
+cat = ['Alimentación', 'Transporte','Entretenimiento', 'Salud']
+gastos = [[],[],[],[]]
+presupuesto = 3000
+gastado = 0
+
+while True:
+  orden = input('Elige una opción:\n0. Salir \n1. Agregar gasto\n2. Resumen de gastos\n3. Mostrar Balance Presupuesto\n')
+  match orden:
+    case '0':
+      break
+    case '1':
+      print('Escoge el número de la categoría:')
+      for i in range(len(cat)):
+        print(i,'-',cat[i])
+      c = int(input())
+      try:
+        m = float(input('Indique el monto del gasto en valor numérico.'))
+        if m <= 0:
+          raise Exception
+      except:
+        print('Eso no es un monto de gasto válido.')
+        continue
+      match c:
+        case 0:
+          agregar_gasto(cat.index('Alimentación'),m)
+        case 1:
+          agregar_gasto(cat.index('Transporte'),m)
+        case 2:
+          agregar_gasto(cat.index('Entretenimiento'),m)
+        case 3:
+          agregar_gasto(cat.index('Salud'),m)
+        case _:
+          print('Selecciona un comando válido.')
+          continue
+      gastado += m
+    case '2':
+      resumen_gastos(1000, gastos)
+    case '3':
+      presupuesto = int(input('Ingrese su presupuesto: '))
+      mostrar_balance_presupuesto(gastado)
+    case _:
+      print('Ingrese un comando válido')
+
+print('Gracias por usar nuestro simulador.')
